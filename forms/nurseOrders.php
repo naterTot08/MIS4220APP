@@ -7,7 +7,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Accordion -->
                 <a href="#collapseCardNurseStatus" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardNurseStatus">
-                  <h6 class="m-0 font-weight-bold text-primary">Order Form</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Patient Order Status</h6>
                 </a>
                 <!-- Card Content - Collapse -->
                 <div class="collapse show" id="collapseCardNurseStatus">
@@ -51,13 +51,11 @@
                 <!-- Card Content - Collapse -->
                 <div class="collapse show" id="collapseCardNurse">
                   <div class="card-body">
+                    Record Heart Rate with Device:
                     <div class="row">
                       
-                      <div class="col-lg-3">Record Heart Rate with Device:</div>
-                      
-                      <div class="col-lg-3">
-                        <!--options-->
-                        <div class="input-group mb-3">
+                      <div class="col-lg-2">
+                        <div class="input-group mb-1">
                           <div class="input-group-prepend">
                             <div class="input-group-text">
                               <input type="radio" aria-label="Radio button for following text input">
@@ -73,46 +71,63 @@
                           </div>
                           <label class="input-group-text" for="inputGroupSelect01">No</label>
                         </div>
-                      </div>
-                      <!--end options-->
-                      <div class="col-lg-3">
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <button type="button" class="btn btn-outline-secondary">Interval</button>
-                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="#">Minutes</a>
-                              <a class="dropdown-item" href="#">Hours</a>
-                              <a class="dropdown-item" href="#">Days</a>
-                              <div role="separator" class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#">Weeks</a>
-                              <a class="dropdown-item" href="#">Years</a>
-                            </div>
-                          </div>
-                          <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
-                        </div>
 
+
+                      </div>
+                      
+                      <div class="col-lg-2">
+                        
                         <div class="input-group">
-                          <input type="text" class="form-control" aria-label="Text input with segmented dropdown button">
-                          <div class="input-group-append">
-                            <button type="button" class="btn btn-outline-secondary">Duration</button>
-                            <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item" href="#">Minutes</a>
-                              <a class="dropdown-item" href="#">Hours</a>
-                              <a class="dropdown-item" href="#">Days</a>
-                              <div role="separator" class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#">Weeks</a>
-                              <a class="dropdown-item" href="#">Years</a>
+                          <label class="input-group" for="inputGroupSelect01">Order Start Date: </label>
+                          <div class="input-group">
+                            <div class="input-group">
+                              <input type="Date" name="orderStartDate">
                             </div>
                           </div>
+                          
+                        </div>                        
+                      </div><!--end start date-->
+                      <div class="col-lg-2">
+                        
+                        <div class="input-group">
+                          <label class="input-group" for="inputGroupSelect01">Order End Date: </label>
+                          <div class="input-group-prepend">
+                            <div class="input-group">
+                              <input type="Date" name="orderEndDate">
+                            </div>
+                          </div>                          
                         </div>
-                      </div>
-                      <!--end duration options-->
+                      </div><!-- end end date-->
+
+                        
+                      <div class="col-lg-3">
+                        
+                        <div class="input-group">
+                          <label class="input-group" for="inputGroupSelect01">Interval</label>
+                          <div class="input-group">
+                            <div class="input-group">
+                              <select class="custom-select" id="orderInterval">
+                                <option selected>Choose...</option>
+                                <option value="1">Minutes</option>
+                                <option value="2">Hours</option>
+                                <option value="3">Days</option>
+                              </select>
+                            </div>
+                          </div>
+                          
+                        </div>                        
+                      </div><!--end interval-->
+                      <div class="col-lg-3">
+                        
+                        <div class="input-group">
+                          <label class="input-group" for="inputGroupSelect01">Duration</label>
+                          <div class="input-group-prepend">
+                            <div class="input-group">
+                              <input type="text" name="Duration">
+                            </div>
+                          </div>                          
+                        </div>
+                      </div><!-- end duration-->
                     </div><!-- end input-->
                   </div>
                      

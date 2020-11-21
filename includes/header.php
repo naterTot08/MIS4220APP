@@ -1,3 +1,10 @@
+<?php 
+include_once 'includes/dbh.php';
+  session_start()
+
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
