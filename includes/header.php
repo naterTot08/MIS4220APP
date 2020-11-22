@@ -1,5 +1,6 @@
 <?php 
 include_once 'includes/dbh.php';
+
   session_start()
 
 
@@ -26,4 +27,5 @@ include_once 'includes/dbh.php';
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
+
 
