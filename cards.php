@@ -1,4 +1,4 @@
-<?php $page = 'cards'; $pageType= 'components'; ?>
+<?php $page = 'goals'; $pageType= 'components'; ?>
 <?php include 'includes/header.php'; ?>
 <?php include 'includes/nav.php'; ?>
 

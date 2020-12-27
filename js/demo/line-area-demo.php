@@ -1,4 +1,3 @@
-// Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
@@ -46,7 +45,7 @@ borderWidth: 2
 },
 {
 label: "My Second dataset",
-data: [28, 48, 40, 19, 86, 27, 90],
+data: [28, 48, 40, 19, 86, 27, 500],
 backgroundColor: [
 'rgba(0, 137, 132, .2)',
 ],

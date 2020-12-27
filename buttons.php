@@ -1,4 +1,4 @@
-<?php $page = 'buttons'; $pageType= 'components';?>
+<?php $page = 'stats'; $pageType= 'components';?>
 <?php include 'includes/header.php'; ?>
 <?php include 'includes/nav.php'; ?>
 

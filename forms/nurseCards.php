@@ -29,7 +29,7 @@ $percentComplete = ($daysFrom->format('%R%a')*-1) % $totalDays->format('%R%a');
                       <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Nurse Encounter</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">Encounter Date</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $nurseDate->format('m/d/Y'); ?></div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $today->format('m/d/Y'); ?></div>
                       </div>
                       <div class="col-auto">
                         <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -42,7 +42,7 @@ $percentComplete = ($daysFrom->format('%R%a')*-1) % $totalDays->format('%R%a');
 
             <!-- Form Two Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-              <a href="formTwo.php">
+              <a href="physicianEncounter.php">
                 <div class="card border-left-success shadow h-100 py-2">
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -62,7 +62,7 @@ $percentComplete = ($daysFrom->format('%R%a')*-1) % $totalDays->format('%R%a');
 
             <!-- Form Three Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
-                <a href="formThree.php">
+                <a href="patientAssessment.php">
                 <div class="card border-left-info shadow h-100 py-2">
                   <div class="card-body">
                     <div class="row no-gutters align-items-center">

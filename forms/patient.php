@@ -8,44 +8,8 @@
                 <!-- Card Content - Collapse -->
                 <div class="collapse show" id="collapseCardPtCheckIn">
                   <div class="card-body">
-                  	<div class="input-group mb-3">
-					  <div class="input-group-prepend">
-					    <span class="input-group-text" id="inputGroup-sizing-default">Height</span>
-					  </div>
-					  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-					</div>
+                  	<?php include 'db/selectPatientAssessments.php'; ?>
 
-					<div class="input-group mb-3">
-					  <div class="input-group-prepend">
-					    <span class="input-group-text" id="inputGroup-sizing-default">Weight</span>
-					  </div>
-					  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-					</div>
-
-					<div class="input-group mb-3">
-					  <div class="input-group-prepend">
-					    <span class="input-group-text" id="inputGroup-sizing-default">BMI</span>
-					  </div>
-					  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-					</div>
-
-					<div class="input-group mb-3">
-					  <div class="input-group-prepend">
-					    <span class="input-group-text" id="inputGroup-sizing-default">Tempurature</span>
-					  </div>
-					  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-					</div>
-
-					
-
-
-                  	Height
-                  	Weight
-					BMI
-					Body Fat %
-					Heart Rate
-					Blood Pressure
-					Tempurature
                   </div>
                 </div>
               </div>

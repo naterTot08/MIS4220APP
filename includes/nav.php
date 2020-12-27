@@ -1,3 +1,30 @@
+<?php include 'db/selectPatient.php'; ?>
+<?php  
+$today = date('Y-m-d');
+$sql = "SELECT count(*) as total FROM orders WHERE response IS NULL AND userID=" . $_SESSION["userID"] . " AND orderDate <= " . "'" . $today . "'" . ";";
+$result = mysqli_query($conn, $sql);
+$resultCheck = mysqli_num_rows($result);
+
+
+if ($resultCheck > 0) {
+  while ($row = mysqli_fetch_assoc($result)) {
+    $orderCount = $row['total'];
+    
+  }
+}
+$sql = "SELECT count(*) as messageTotal FROM orders WHERE response IS NULL AND userID=" . $_SESSION["userID"] . " AND orderDate >= " . "'" . $today . "'" . ";";
+$result = mysqli_query($conn, $sql);
+$resultCheck = mysqli_num_rows($result);
+
+
+if ($resultCheck > 0) {
+  while ($row = mysqli_fetch_assoc($result)) {
+    $messageTotal = $row['messageTotal'];
+    
+  }
+}
+  ?>
+
 <body id="page-top">
 
   <!-- Page Wrapper -->
@@ -21,7 +48,7 @@
       <li class="nav-item <?php if($page=='home'){echo 'active';} ?>">
         <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Status</span></a>
+          <span>Check-In</span></a>
       </li>
 
       <!-- Divider -->
@@ -29,37 +56,37 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Internal Roles
+        Pages
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item <?php if($pageType=='components'){echo 'active';} ?>">
         <a class="nav-link <?php if($pageType!='components'){echo 'collapsed';} ?>" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-user-md"></i>
-          <span>Physician</span>
+          <i class="fas fa-fw fa-bullseye"></i>
+          <span>Goals</span>
         </a>
         <div id="collapseTwo" class="collapse <?php if($pageType=='components'){echo 'show';} ?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item <?php if($page=='buttons'){echo 'active';} ?>" href="buttons.php">Buttons</a>
-            <a class="collapse-item <?php if($page=='cards'){echo 'active';} ?>" href="cards.php">Cards</a>
+            <a class="collapse-item <?php if($page=='goals'){echo 'active';} ?>" href="goals.php">Goals</a>
+            <a class="collapse-item <?php if($page=='stats'){echo 'active';} ?>" href="stats.php">Stats</a>
           </div>
         </div>
       </li>
 
       <!-- Nav Item - Nurses Collapse Menu -->
-      <li class="nav-item <?php if($pageType=='nurses'){echo 'active';} ?>">
-        <a class="nav-link <?php if($pageType!='nurses'){echo 'collapsed';} ?>" href="#" data-toggle="collapse" data-target="#collapseNurses" aria-expanded="true" aria-controls="collapseNurses">
-          <i class="fas fa-fw fa-user-nurse"></i>
-          <span>Nurse</span>
+      <li class="nav-item <php if($pageType=='nurses'){echo 'active';} ?>">
+        <a class="nav-link <php if($pageType!='nurses'){echo 'collapsed';} ?>" href="#" data-toggle="collapse" data-target="#collapseNurses" aria-expanded="true" aria-controls="collapseNurses">
+          <i class="fas fa-fw fa-info"></i>
+          <span>Stats</span>
         </a>
-        <div id="collapseNurses" class="collapse <?php if($pageType=='nurses'){echo 'show';} ?>" aria-labelledby="headingNurses" data-parent="#accordionSidebar">
+        <div id="collapseNurses" class="collapse <php if($pageType=='nurses'){echo 'show';} ?>" aria-labelledby="headingNurses" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Nurses Menu:</h6>
-            <a class="collapse-item <?php if($page=='nursePts'){echo 'active';} ?>" href="nurse-patients.php">Patients</a>
-            <a class="collapse-item <?php if($page=='orders'){echo 'active';} ?>" href="nurse-orders.php">Orders</a>
-            <a class="collapse-item <?php if($page=='schedule'){echo 'active';} ?>" href="nurse-schedule.php">Schedule</a>
-            <a class="collapse-item <?php if($page=='other'){echo 'active';} ?>" href="nurse-other.php">Other</a>
+            <a class="collapse-item <php if($page=='nursePts'){echo 'active';} ?>" href="nurse-patients.php">Activity</a>
+            <a class="collapse-item <php if($page=='orders'){echo 'active';} ?>" href="nurse-orders.php">Orders</a>
+            <a class="collapse-item <php if($page=='schedule'){echo 'active';} ?>" href="nurse-schedule.php">Schedule</a>
+            <a class="collapse-item <php if($page=='other'){echo 'active';} ?>" href="nurse-other.php">Other</a>
           </div>
         </div>
       </li>
@@ -172,46 +199,17 @@
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
                 <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
+                <span class="badge badge-danger badge-counter" <?php if ($orderCount === '0') {?>
+                  style="display: none"
+                <?php } ?>
+                ><?php echo $orderCount; ?></span>
               </a>
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
-                  Alerts Center
+                  Open Orders:
                 </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-primary">
-                      <i class="fas fa-file-alt text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 12, 2019</div>
-                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-success">
-                      <i class="fas fa-donate text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-warning">
-                      <i class="fas fa-exclamation-triangle text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 2, 2019</div>
-                    Spending Alert: We've noticed unusually high spending for your account.
-                  </div>
-                </a>
+                <?php include 'db/selectOrderNotis.php'; ?>
                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
               </div>
             </li>
@@ -219,55 +217,19 @@
             <!-- Nav Item - Messages -->
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
+                <i class="fas fa-clipboard-list fa-fw"></i>
                 <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">7</span>
+                <span class="badge badge-info badge-counter"<?php if ($messageTotal === '0') {?>
+                  style="display: none"
+                <?php } ?>
+                ><?php echo $messageTotal; ?></span>
               </a>
               <!-- Dropdown - Messages -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
-                  Message Center
+                <h6 class="dropdown-header bg-info border-info" >
+                  Upcoming Order Info:
                 </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div class="font-weight-bold">
-                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                    <div class="small text-gray-500">Emily Fowler · 58m</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
-                    <div class="status-indicator"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-                    <div class="small text-gray-500">Jae Chun · 1d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
-                    <div class="status-indicator bg-warning"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                  </div>
-                </a>
+                <?php include 'db/orderMessages.php'; ?>
                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
               </div>
             </li>
@@ -277,8 +239,8 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Guy Example</span>
-                <img class="img-profile rounded-circle" src="img/guy.jpg">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $fullName; ?></span>
+                <img class="img-profile rounded-circle" src="<?php echo $photo; ?>">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -286,11 +248,11 @@
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="../review.php">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
+                  Wellness Check-In
                 </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="activity.php">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                   Activity Log
                 </a>
